@@ -1,6 +1,5 @@
 import gradio as gr
 import base64
-import time
 from openai import OpenAI
 from dotenv import dotenv_values
 
