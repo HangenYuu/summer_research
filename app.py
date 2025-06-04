@@ -10,40 +10,32 @@ client = OpenAI(
     api_key=env_values["GROQ_API_KEY"],
 )
 
-# Enhanced system prompt following best practices
-SYSTEM_PROMPT = """You are an expert microscopy assistant specialized in zoom and focus optimization.
+SYSTEM_PROMPT = """CONTEXT: You are controlling a motorized Z-axis microscope. Initial reference image shows optimal focus on a similar sample. Subsequent images come from current Z-positions after your repositioning. The Z-axis position is measured by the number of steps from top to bottom in the range of 0 to .... The microscope position always starts at 0.
 
-ROLE: Analyze microscope images and provide precise zoom/focus adjustment instructions.
+ROLE: You are a precision Z-axis control agent responsible for automated focusing that learns from adjustment history. Use human-like trial/error logic with dynamic step sizing to adjust the focus of the image by repositioning the Z-position of the microscope measured in number of steps between the range of 0 to ....
 
-MICROSCOPE SPECIFICATIONS:
-- Zoom range: 50x to 1000x (strictly enforced)
-- Focus control: Coarse and fine adjustment available
-- Current zoom level will be provided with each image
+ADAPTIVE STRATEGY:
+1. Initial coarse search: Large steps (±10-20 steps) when far from focus
+2. Fine-tuning: Reduce step size by 50% when focus improves
+3. Overshoot detection: Reverse direction with smaller steps (25%) if focus degrades
+4. Convergence: <MIN_STEP> step precision when near optimal focus
 
-REFERENCE STANDARD:
-You have access to a reference image showing optimal focus and zoom quality. Use this as your benchmark for all comparisons.
+ANALYSIS PROCESS:
+1. Compare current image to reference image to determine if focus is achieved
+2. Track focus quality trajectory by comparing to previous images after adjustments
+3. Calculate optimal next step size/direction using historical data
+mas
+RESPONSE FORMAT:
+**Focus State:** 
+- Quality: [% match to reference] 
+- Trend: [Improving/Declining/Stagnant]
+**Adjustment:** 
+- Direction: [Up/Down] 
+- Steps: [Number] (Size: [Coarse/Medium/Fine])
+**Rationale:** [Pattern analysis from last 3 positions]
+**Expected:** [Predicted focus improvement %]
 
-ANALYSIS REQUIREMENTS:
-1. Compare current image quality to the reference image
-2. Assess sharpness, contrast, detail clarity, and appropriate magnification
-3. Consider current zoom level when recommending changes
-4. Provide specific, actionable instructions
-
-RESPONSE FORMAT (always include all sections):
-**Focus Assessment:** [Poor/Fair/Good/Excellent]
-**Current Zoom Evaluation:** [Too Low/Appropriate/Too High]
-**Recommended Actions:**
-- Zoom adjustment: [specific level or direction]
-- Focus adjustment: [coarse/fine, direction]
-**Reasoning:** [brief technical justification]
-**Expected Outcome:** [what user should see after adjustments]
-
-GUIDELINES:
-- Be concise and precise
-- Use bullet points for clarity
-- Focus on practical, actionable advice
-- Recommend zoom levels within 50x-1000x range only
-- Prioritize image quality over magnification level"""
+NEVER INCLUDE: Technical specs, safety disclaimers, or hardware details."""
 
 
 def encode_image_to_base64(image_path):
@@ -55,10 +47,8 @@ def encode_image_to_base64(image_path):
         return None
 
 
-def respond(message, history, reference_image, current_zoom):
+def respond(message, history, reference_image, current_z_position):
     """Process chat messages and generate microscope control recommendations"""
-
-    # Prepare messages for the API
     messages = [{"role": "system", "content": SYSTEM_PROMPT}]
 
     # Add reference image context if available
@@ -71,7 +61,7 @@ def respond(message, history, reference_image, current_zoom):
                     "content": [
                         {
                             "type": "text",
-                            "text": "REFERENCE IMAGE - This shows optimal focus and zoom quality. Use this as your standard for comparison:",
+                            "text": "REFERENCE IMAGE - This shows optimal focus quality for a similar sample. Use this as your standard for comparison:",
                         },
                         {
                             "type": "image_url",
@@ -117,8 +107,8 @@ def respond(message, history, reference_image, current_zoom):
 
         if current_base64:
             context_message = f"""CURRENT MICROSCOPE STATUS:
-- Zoom Level: {current_zoom}x
-- Request: {message['text'] if message['text'] else 'Please analyze this image and provide zoom/focus recommendations'}
+- Z-position: {current_z_position}
+- Request: {message['text'] if message['text'] else 'Please analyze this image together with the adjustment history results and provide repositioning recommendations'}
 
 CURRENT IMAGE TO ANALYZE:"""
 
@@ -140,7 +130,7 @@ CURRENT IMAGE TO ANALYZE:"""
             messages.append(
                 {
                     "role": "user",
-                    "content": f"Current zoom: {current_zoom}x. {message['text']}",
+                    "content": f"Current Z-position: {current_z_position}. {message['text']}",
                 }
             )
     else:
@@ -148,7 +138,7 @@ CURRENT IMAGE TO ANALYZE:"""
         messages.append(
             {
                 "role": "user",
-                "content": f"Current zoom level: {current_zoom}x. {message['text']}",
+                "content": f"Current Z-position level: {current_z_position}. {message['text']}",
             }
         )
 
@@ -159,7 +149,7 @@ CURRENT IMAGE TO ANALYZE:"""
             messages=messages,
             stream=True,
             max_tokens=800,
-            temperature=0.1,  # Lower temperature for more consistent technical advice
+            temperature=0.1,
         )
 
         # Stream the response
@@ -175,7 +165,6 @@ CURRENT IMAGE TO ANALYZE:"""
         yield f"Error processing request: {str(e)}"
 
 
-# Create the Gradio interface using modern ChatInterface
 with gr.Blocks(
     title="Microscope Zoom Control Assistant", theme=gr.themes.Soft()
 ) as demo:
@@ -193,36 +182,35 @@ with gr.Blocks(
                 height=200,
             )
 
-            # Current zoom level input
-            zoom_input = gr.Number(
-                label="Current Zoom Level",
+            # Current z-position level input
+            z_input = gr.Number(
+                label="Current Z-position Level",
                 value=50,
-                minimum=50,
+                minimum=0,
                 maximum=1000,
-                step=10,
+                step=1,
                 interactive=True,
-                info="Microscope zoom range: 50x - 1000x",
+                info="Microscope z-position range: 0 - ",
             )
 
             # Quick zoom presets
             with gr.Row():
-                zoom_50 = gr.Button("50x", size="sm")
-                zoom_100 = gr.Button("100x", size="sm")
-                zoom_200 = gr.Button("200x", size="sm")
-                zoom_400 = gr.Button("400x", size="sm")
-                zoom_1000 = gr.Button("1000x", size="sm")
+                z_15 = gr.Button("15", size="sm")
+                # zoom_100 = gr.Button("100x", size="sm")
+                # zoom_200 = gr.Button("200x", size="sm")
+                # zoom_400 = gr.Button("400x", size="sm")
+                # zoom_1000 = gr.Button("1000x", size="sm")
 
             # Instructions
             gr.Markdown(
                 """
             **Instructions:**
             1. Upload reference image (optimal quality)
-            2. Set current zoom level
-            3. Upload current microscope image
-            4. Ask for zoom/focus recommendations
+            2. Upload current microscope image
+            3. Set current z-position
+            4. Ask for z-repositioning recommendations
             
             **Tips:**
-            - Include current zoom level in your message
             - Describe what you want to achieve
             - Mention any specific issues you're seeing
             """
@@ -232,7 +220,7 @@ with gr.Blocks(
             # Main chatbot interface using ChatInterface
             chatbot = gr.ChatInterface(
                 respond,
-                additional_inputs=[reference_image, zoom_input],
+                additional_inputs=[reference_image, z_input],
                 title=None,
                 description=None,
                 multimodal=True,
@@ -245,11 +233,11 @@ with gr.Blocks(
             )
 
     # Event handlers for quick zoom buttons
-    zoom_50.click(lambda: 50, outputs=zoom_input)
-    zoom_100.click(lambda: 100, outputs=zoom_input)
-    zoom_200.click(lambda: 200, outputs=zoom_input)
-    zoom_400.click(lambda: 400, outputs=zoom_input)
-    zoom_1000.click(lambda: 1000, outputs=zoom_input)
+    z_15.click(lambda: 15, outputs=z_input)
+    # zoom_100.click(lambda: 100, outputs=z_input)
+    # zoom_200.click(lambda: 200, outputs=z_input)
+    # zoom_400.click(lambda: 400, outputs=z_input)
+    # zoom_1000.click(lambda: 1000, outputs=z_input)
 
 if __name__ == "__main__":
     demo.launch(debug=True)
