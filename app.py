@@ -10,7 +10,7 @@ client = OpenAI(
     api_key=env_values["GROQ_API_KEY"],
 )
 
-SYSTEM_PROMPT = """CONTEXT: You are controlling a motorized Z-axis microscope. Initial reference image shows optimal focus on a similar sample. Subsequent images come from current Z-positions after your repositioning. The Z-axis position is measured by the number of steps from top to bottom in the range of 0 to .... The microscope position always starts at 0.
+SYSTEM_PROMPT = """CONTEXT: You are controlling a motorized Z-axis microscope. Initial reference image shows optimal focus on a similar sample. Subsequent images come from current Z-positions after your repositioning. The Z-axis position is measured by the number of steps from top to bottom in the range of 0 to 40. The microscope position always starts at 0 i.e., at the very top.
 
 ROLE: You are a precision Z-axis control agent responsible for automated focusing that learns from adjustment history. Use human-like trial/error logic with dynamic step sizing to adjust the focus of the image by repositioning the Z-position of the microscope measured in number of steps between the range of 0 to ....
 
@@ -30,8 +30,7 @@ RESPONSE FORMAT:
 - Quality: [% match to reference] 
 - Trend: [Improving/Declining/Stagnant]
 **Adjustment:** 
-- Direction: [Up/Down] 
-- Steps: [Number] (Size: [Coarse/Medium/Fine])
+- Steps: [Number (positive for moving down, negative for moving up, but remember the position cannot be smaller than 0)] (Size: [Coarse/Medium/Fine])
 **Rationale:** [Pattern analysis from last 3 positions]
 **Expected:** [Predicted focus improvement %]
 
@@ -185,12 +184,12 @@ with gr.Blocks(
             # Current z-position level input
             z_input = gr.Number(
                 label="Current Z-position Level",
-                value=50,
+                value=15,
                 minimum=0,
-                maximum=1000,
+                maximum=40,
                 step=1,
                 interactive=True,
-                info="Microscope z-position range: 0 - ",
+                info="Microscope z-position range: 0 - 40",
             )
 
             # Quick zoom presets
