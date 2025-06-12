@@ -1,0 +1,117 @@
+{
+  "session_metadata": {
+    "timestamp": "2025-06-12T16:55:24.657925",
+    "saved_at": "2025-06-12 16:55:24",
+    "total_messages": 15,
+    "reference_image": "C:\\Users\\Admin\\AppData\\Local\\Temp\\gradio\\2f00f04589ad7eabedbce729eb0b8dd256c08aa30590003ceb260a9392c9ccf8\\References.png",
+    "final_z_position": 750,
+    "session_duration": "N/A"
+  },
+  "chat_history": [
+    {
+      "message_id": 1,
+      "role": "user",
+      "content": [
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\gradio\\6a22d3246d88425ca11d4d657b7932eca05eb81e06cf0d3f6d75190f74ea9876\\0.png"
+      ],
+      "timestamp": "2025-06-12T16:55:24.657925"
+    },
+    {
+      "message_id": 2,
+      "role": "user",
+      "content": "",
+      "timestamp": "2025-06-12T16:55:24.657925"
+    },
+    {
+      "message_id": 3,
+      "role": "assistant",
+      "content": "**Focus State:**\n- Quality: 10% match to reference\n- Trend: Stagnant (This is the initial image, so there's no previous trend)\n\n**Adjustment:**\n- Steps: +1000 (Moving down)\n- Size: Coarse\n\n**Rationale:**\nThe current image shows a very poor match to the reference image, indicating that the focus is far from optimal. Since we are starting from the topmost position (Z=0) and moving down is the only direction available, we will take a coarse step of 1000 steps down to begin the search for better focus. This large step size is chosen to quickly explore the focus range.\n\n**Expected:**\nPredicted focus improvement: 30% (This is a rough estimate based on the assumption that moving down will improve focus. The actual improvement will depend on the sample's characteristics and the microscope's optics.)",
+      "timestamp": "2025-06-12T16:55:24.657925"
+    },
+    {
+      "message_id": 4,
+      "role": "user",
+      "content": [
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\gradio\\2bc9bd896a083e61db2c2c441c2c89d083bd8e25c70d714850bb5a38052da682\\1000.png"
+      ],
+      "timestamp": "2025-06-12T16:55:24.657925"
+    },
+    {
+      "message_id": 5,
+      "role": "user",
+      "content": "",
+      "timestamp": "2025-06-12T16:55:24.657925"
+    },
+    {
+      "message_id": 6,
+      "role": "assistant",
+      "content": "**Focus State:**\n- Quality:8% match to reference\n- Trend: Declining (The focus quality has decreased from10% to8% after moving down1000 steps)\n\n**Adjustment:**\n- Steps: -500 (Moving up)\n- Size: Medium\n\n**Rationale:**\nThe focus quality has deteriorated after moving down1000 steps, indicating that we have moved past the optimal focus position. To correct this, we will move back up by half the previous step size (50% of1000 = 500 steps). This reversal with a smaller step size aims to bring us closer to the optimal focus.\n\n**Expected:**\nPredicted focus improvement:20% (Moving back up is expected to improve focus as we are correcting the overshoot. The actual improvement will depend on how close we get to the optimal position.)",
+      "timestamp": "2025-06-12T16:55:24.657925"
+    },
+    {
+      "message_id": 7,
+      "role": "user",
+      "content": [
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\gradio\\1467c7a4cea3cd04b1450c57707ff50e7ffb00ad47f276ced5955856611bf0ef\\3_500.png"
+      ],
+      "timestamp": "2025-06-12T16:55:24.657925"
+    },
+    {
+      "message_id": 8,
+      "role": "user",
+      "content": "",
+      "timestamp": "2025-06-12T16:55:24.657925"
+    },
+    {
+      "message_id": 9,
+      "role": "assistant",
+      "content": "**Focus State:**\n- Quality:9% match to reference\n- Trend: Improving (The focus quality has slightly increased from8% to9% after moving up500 steps)\n\n**Adjustment:**\n- Steps: +250 (Moving down)\n- Size: Fine\n\n**Rationale:**\nAfter moving up500 steps, the focus quality has improved slightly, indicating that we are getting closer to the optimal focus. The adjustment history shows that moving down initially worsened the focus, but moving back up improved it. Now, we will take a smaller step down (25% of the previous step size, which was500 steps, so250 steps) to continue the search for optimal focus. This fine step size is chosen to precisely locate the optimal position.\n\n**Expected:**\nPredicted focus improvement:15% (Continuing in the same direction is expected to further improve focus as we are now closer to the optimal position. The actual improvement will depend on how accurately we can locate the focus.)",
+      "timestamp": "2025-06-12T16:55:24.657925"
+    },
+    {
+      "message_id": 10,
+      "role": "user",
+      "content": [
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\gradio\\2bf925c03b2ead1c88b33001b1ce936da1334c43adcedc04d457d2ea6d5cea31\\4_750.png"
+      ],
+      "timestamp": "2025-06-12T16:55:24.657925"
+    },
+    {
+      "message_id": 11,
+      "role": "user",
+      "content": "",
+      "timestamp": "2025-06-12T16:55:24.657925"
+    },
+    {
+      "message_id": 12,
+      "role": "assistant",
+      "content": "**Focus State:**\n- Quality:8% match to reference\n- Trend: Declining (The focus quality has decreased from9% to8% after moving down250 steps from Z-position500 to750)\n\n**Adjustment:**\n- Steps: -125 (Moving up)\n- Size: Fine\n\n**Rationale:**\nThe focus quality has deteriorated after moving down250 steps, indicating that we have overshot the optimal focus position. To correct this, we will move back up by half the previous step size (50% of250 =125 steps). This reversal with a smaller step size aims to bring us closer to the optimal focus.\n\n**Expected:**\nPredicted focus improvement:12% (Moving back up is expected to improve focus as we are correcting the overshoot. The actual improvement will depend on how close we get to the optimal position.)",
+      "timestamp": "2025-06-12T16:55:24.657925"
+    },
+    {
+      "message_id": 13,
+      "role": "user",
+      "content": [
+        "C:\\Users\\Admin\\AppData\\Local\\Temp\\gradio\\df202e840cbd5a35a95227b4068eafe51107225a284aca38afefbc566772098b\\5_625.png"
+      ],
+      "timestamp": "2025-06-12T16:55:24.657925"
+    },
+    {
+      "message_id": 14,
+      "role": "user",
+      "content": "",
+      "timestamp": "2025-06-12T16:55:24.657925"
+    },
+    {
+      "message_id": 15,
+      "role": "assistant",
+      "content": "Error processing request: Error code: 400 - {'error': {'message': 'Too many images provided.  This model supports up to 5 images', 'type': 'invalid_request_error'}}",
+      "timestamp": "2025-06-12T16:55:24.657925"
+    }
+  ],
+  "microscope_settings": {
+    "z_position_range": "0-4000",
+    "step_minimum": 10,
+    "current_position": 750
+  }
+}
