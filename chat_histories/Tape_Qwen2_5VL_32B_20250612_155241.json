@@ -306,6 +306,6 @@
   "microscope_settings": {
     "z_position_range": "0-4000",
     "step_minimum": 10,
-    "current_position": 2995
+    "current_position": 2985
   }
 }

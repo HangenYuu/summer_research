@@ -1,0 +1,37 @@
+{
+  "session_metadata": {
+    "timestamp": "2025-06-13T13:51:38.583020",
+    "saved_at": "2025-06-13 13:51:38",
+    "total_messages": 3,
+    "reference_image": "C:\\Users\\pham0083\\AppData\\Local\\Temp\\gradio\\1ee8c6302ec9b5950c9414287ea761f1ab92142f8960d9a4005fdd49db368377\\References.png",
+    "final_z_position": 0,
+    "session_duration": "N/A"
+  },
+  "chat_history": [
+    {
+      "message_id": 1,
+      "role": "user",
+      "content": [
+        "C:\\Users\\pham0083\\AppData\\Local\\Temp\\gradio\\94efc069d5189212ff7aeb5c9a3bfdaf7ee7f1b2e9e88863afbf4ca0d5d2d016\\1_0.png"
+      ],
+      "timestamp": "2025-06-13T13:51:38.583020"
+    },
+    {
+      "message_id": 2,
+      "role": "user",
+      "content": "",
+      "timestamp": "2025-06-13T13:51:38.583020"
+    },
+    {
+      "message_id": 3,
+      "role": "assistant",
+      "content": "Please use the reference image to help me understand how to adjust the focus for this sample.\n\nREFERENCE IMAGE - This shows optimal focus quality for a similar sample. Use this as your standard for comparison:\n\n[img-2]\n\nCURRENT MICROSCOPE STATUS:\n- Z-position: 0\n- Request: Please analyze this image together with the adjustment history results and provide repositioning recommendations\n\nCURRENT IMAGE TO ANALYZE:\n\n[img-3]\n\nPlease use the reference image to help me understand how to adjust the focus for this sample.\n\nREFERENCE IMAGE - This shows optimal focus quality for a similar sample. Use this as your standard for comparison:\n\n[img-4]\n\nCURRENT MICROSCOPE STATUS:\n- Z-position: 0\n- Request: Please analyze this image together with the adjustment history results and provide repositioning recommendations\n\nCURRENT IMAGE TO ANALYZE:\n\n[img-5]\n\nPlease use the reference image to help me understand how to adjust the focus for this sample.\n\nREFERENCE IMAGE - This shows optimal focus quality for a similar sample. Use this as your standard for comparison:\n\n[img-6]\n\nCURRENT MICROSCOPE STATUS:\n- Z-position: 0\n- Request: Please analyze this image together with the adjustment history results and provide repositioning recommendations\n\nCURRENT IMAGE TO ANALYZE:\n\n[img-7]\n\nPlease use the reference image to help me understand how to adjust the focus for this sample.\n\nREFERENCE IMAGE - This shows optimal focus quality for a similar sample. Use this as your standard for comparison:\n\n[img-8]\n\nCURRENT MICROSCOPE STATUS:\n- Z-position: 0\n- Request: Please analyze this image together with the adjustment history results and provide repositioning recommendations\n\nCURRENT IMAGE TO ANALYZE:\n\n[img-9]\n\nPlease use the reference image to help me understand how to adjust the focus for this sample.\n\nREFERENCE IMAGE - This shows optimal focus quality for a similar sample. Use this as your standard for comparison:\n\n[img-10]\n\nCURRENT MICROSCOPE STATUS:\n- Z-position: 0\n- Request: Please analyze this image together with the adjustment history results and provide repositioning recommendations\n\nCURRENT IMAGE TO ANALYZE:\n\n[img-11]\n\nPlease use the reference image to help me understand how to adjust the focus for this sample.\n\nREFERENCE IMAGE - This shows optimal focus quality for a similar sample. Use this as your standard for comparison:\n\n[img-12]\n\nCURRENT MICROSCOPE STATUS:\n- Z-position: 0\n- Request: Please analyze this image together with the adjustment history results and provide repositioning recommendations\n\nCURRENT IMAGE TO ANALYZE:\n\n[img-13]\n\nPlease use the reference image to help me understand how to adjust the focus for this sample.\n\nREFERENCE IMAGE - This shows optimal focus quality for a similar sample. Use this as your standard for comparison:\n\n[img-14]\n\nCURRENT MICROSCOPE STATUS:\n- Z-position: 0\n- Request: Please analyze this image together with the adjustment history results and provide repositioning recommendations\n\nCURRENT IMAGE TO ANALYZE:\n\n[img-15]\n\nPlease use the reference image to help me understand how to adjust the focus for",
+      "timestamp": "2025-06-13T13:51:38.583020"
+    }
+  ],
+  "microscope_settings": {
+    "z_position_range": "0-4000",
+    "step_minimum": 10,
+    "current_position": 0
+  }
+}

@@ -11,21 +11,24 @@ env_values = dotenv_values(".env")
 # Provider configurations
 PROVIDERS = {
     "Chutes": {
-        "base_url": "https://llm.chutes.ai/v1/",
-        "api_key": env_values["CHUTES_API_KEY"],
+        "client": OpenAI(
+            base_url="https://llm.chutes.ai/v1/", api_key=env_values["CHUTES_API_KEY"]
+        ),
         "models": ["Qwen/Qwen2.5-VL-32B-Instruct"],
     },
     "OpenAI": {
-        "base_url": None,
-        "api_key": env_values["OPENAI_API_KEY"],
+        "client": OpenAI(
+            base_url="https://llm.chutes.ai/v1/", api_key=env_values["OPENAI_API_KEY"]
+        ),
         "models": ["gpt-4.1", "gpt-4.1-mini"],
     },
-    "Groq": {
-        "base_url": "https://api.groq.com/openai/v1",
-        "api_key": env_values["GROQ_API_KEY"],
+    "Ollama": {
+        "client": OpenAI(base_url="http://localhost:11434/v1/", api_key="ollama"),
         "models": [
-            "meta-llama/llama-4-scout-17b-16e-instruct",
-            "meta-llama/llama-4-maverick-17b-128e-instruct",
+            "gemma3:12b",
+            "hf.co/unsloth/medgemma-4b-it-GGUF:Q8_K_XL",
+            "hf.co/mradermacher/MiniCPM4-8B-GGUF:Q8_0",
+            "hf.co/mradermacher/SmolVLM2-2.2B-Instruct-GGUF:F16",
         ],
     },
 }
@@ -54,15 +57,6 @@ RESPONSE FORMAT:
 - Steps: [Number (positive for moving down, negative for moving up, but remember the position cannot be smaller than 0)] (Size: [Coarse/Medium/Fine])
 **Rationale:** [Pattern analysis from last 3 positions]
 **Expected:** [Predicted focus improvement %]"""
-
-
-def create_client(provider):
-    """Create OpenAI client for the selected provider"""
-    config = PROVIDERS[provider]
-    if config["base_url"]:
-        return OpenAI(base_url=config["base_url"], api_key=config["api_key"])
-    else:
-        return OpenAI(api_key=config["api_key"])
 
 
 def encode_image_to_base64(image_path):
@@ -159,7 +153,7 @@ def save_chat_history(
 
 def respond(message, history, reference_image, current_z_position, provider, model):
     """Process chat messages and generate microscope control recommendations"""
-    current_client = create_client(provider)
+    current_client = PROVIDERS[provider]["client"]
 
     messages = [{"role": "system", "content": SYSTEM_PROMPT}]
 
