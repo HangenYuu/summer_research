@@ -22,6 +22,26 @@ PROVIDERS = {
         ),
         "models": ["gpt-4.1", "gpt-4.1-mini"],
     },
+    "Groq": {
+        "client": OpenAI(
+            base_url="https://api.groq.com/openai/v1",
+            api_key=env_values["GROQ_API_KEY"],
+        ),
+        "models": [
+            "meta-llama/llama-4-scout-17b-16e-instruct",
+            "meta-llama/llama-4-maverick-17b-128e-instruct",
+        ],
+    },
+    "Gemini": {
+        "client": OpenAI(
+            api_key=env_values["GEMINI_API_KEY"],
+            base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+        ),
+        "models": [
+            "gemma-3-27b-it",
+            "gemini-2.5-flash-preview-05-20",
+        ],
+    },
     "Ollama": {
         "client": OpenAI(base_url="http://localhost:11434/v1/", api_key="ollama"),
         "models": [
@@ -250,13 +270,23 @@ CURRENT IMAGE TO ANALYZE:"""
 
     try:
         # Call the API with streaming
-        response = current_client.chat.completions.create(
-            model=model,
-            messages=messages,
-            stream=True,
-            max_tokens=800,
-            temperature=0.1,
-        )
+        if model == "gemini-2.5-flash-preview-05-20":
+            response = current_client.chat.completions.create(
+                model=model,
+                reasoning_effort="low",
+                messages=messages,
+                stream=True,
+                max_tokens=800,
+                temperature=0.1,
+            )
+        else:
+            response = current_client.chat.completions.create(
+                model=model,
+                messages=messages,
+                stream=True,
+                max_tokens=800,
+                temperature=0.1,
+            )
 
         # Stream the response
         partial_message = ""
