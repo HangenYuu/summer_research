@@ -38,7 +38,6 @@ PROVIDERS = {
             base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
         ),
         "models": [
-            "gemma-3-27b-it",
             "gemini-2.5-flash-preview-05-20",
         ],
     },
@@ -46,9 +45,9 @@ PROVIDERS = {
         "client": OpenAI(base_url="http://localhost:11434/v1/", api_key="ollama"),
         "models": [
             "gemma3:12b",
-            "hf.co/unsloth/medgemma-4b-it-GGUF:Q8_K_XL",
             "hf.co/mradermacher/MiniCPM4-8B-GGUF:Q8_0",
             "hf.co/mradermacher/SmolVLM2-2.2B-Instruct-GGUF:F16",
+            "gemma3:27b",
         ],
     },
 }

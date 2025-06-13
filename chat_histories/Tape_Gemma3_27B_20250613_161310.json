@@ -1,0 +1,117 @@
+{
+  "session_metadata": {
+    "timestamp": "2025-06-13T16:13:10.959312",
+    "saved_at": "2025-06-13 16:13:10",
+    "total_messages": 15,
+    "reference_image": "C:\\Users\\pham0083\\AppData\\Local\\Temp\\gradio\\1ee8c6302ec9b5950c9414287ea761f1ab92142f8960d9a4005fdd49db368377\\References.png",
+    "final_z_position": 2260,
+    "session_duration": "N/A"
+  },
+  "chat_history": [
+    {
+      "message_id": 1,
+      "role": "user",
+      "content": [
+        "C:\\Users\\pham0083\\AppData\\Local\\Temp\\gradio\\021e40ec590edff1b02b618cf9bb659dd073af8fb9733bc48dd2a41129f2fe7e\\1_0.png"
+      ],
+      "timestamp": "2025-06-13T16:13:10.959312"
+    },
+    {
+      "message_id": 2,
+      "role": "user",
+      "content": "",
+      "timestamp": "2025-06-13T16:13:10.959312"
+    },
+    {
+      "message_id": 3,
+      "role": "assistant",
+      "content": "**Focus State:** \n- Quality: [15% match to reference] \n- Trend: [Declining]\n\n**Adjustment:** \n- Steps: [1500] (Size: [Coarse])\n\n**Rationale:** The current image is severely out of focus and significantly blurred compared to the reference. Starting at position 0, we need a substantial move downwards to begin approaching the focal plane. Given the large discrepancy, a coarse adjustment of 1500 steps is appropriate. No historical data exists yet, so we're initiating the search.\n\n**Expected:** [40% improvement] - We anticipate a significant improvement in focus quality with this large downward step, bringing the match closer to the reference image.",
+      "timestamp": "2025-06-13T16:13:10.959312"
+    },
+    {
+      "message_id": 4,
+      "role": "user",
+      "content": [
+        "C:\\Users\\pham0083\\AppData\\Local\\Temp\\gradio\\ec2da9fb50f0ab186ac663843df8528d876f80d0c6ea409cd1a5916a241cbd90\\2_1500.png"
+      ],
+      "timestamp": "2025-06-13T16:13:10.959312"
+    },
+    {
+      "message_id": 5,
+      "role": "user",
+      "content": "",
+      "timestamp": "2025-06-13T16:13:10.959312"
+    },
+    {
+      "message_id": 6,
+      "role": "assistant",
+      "content": "**Focus State:** \n- Quality: [30% match to reference] \n- Trend: [Improving]\n\n**Adjustment:** \n- Steps: [500] (Size: [Medium])\n\n**Rationale:** The image shows improvement in focus compared to the previous image at position 0, but is still far from optimal. The trend is positive, indicating we are moving in the right direction. We will reduce the step size to 500 to refine the focus and avoid overshooting. The adjustment history is: 0 -> 1500 (improvement).\n\n**Expected:** [20% improvement] - We anticipate a further improvement in focus quality with this medium-sized downward step, bringing the match closer to the reference image.",
+      "timestamp": "2025-06-13T16:13:10.959312"
+    },
+    {
+      "message_id": 7,
+      "role": "user",
+      "content": [
+        "C:\\Users\\pham0083\\AppData\\Local\\Temp\\gradio\\88cff7b7e3cb6a650360cb26301a080b0cb6f166fee0d9cb9f42d3ef515487a7\\3_2000.png"
+      ],
+      "timestamp": "2025-06-13T16:13:10.959312"
+    },
+    {
+      "message_id": 8,
+      "role": "user",
+      "content": "",
+      "timestamp": "2025-06-13T16:13:10.959312"
+    },
+    {
+      "message_id": 9,
+      "role": "assistant",
+      "content": "**Focus State:** \n- Quality: [55% match to reference] \n- Trend: [Improving]\n\n**Adjustment:** \n- Steps: [250] (Size: [Fine])\n\n**Rationale:** The image shows continued improvement in focus, now at 55% match. The trend remains positive. However, the rate of improvement is slowing. We will further reduce the step size to 250 to fine-tune the focus and avoid overshooting. The adjustment history is: 0 -> 1500 -> 2000 (consistent improvement).\n\n**Expected:** [10% improvement] - We anticipate a modest but noticeable improvement in focus quality with this fine-sized downward step, bringing the match closer to the reference image. We are approaching optimal focus and need to be more precise.",
+      "timestamp": "2025-06-13T16:13:10.959312"
+    },
+    {
+      "message_id": 10,
+      "role": "user",
+      "content": [
+        "C:\\Users\\pham0083\\AppData\\Local\\Temp\\gradio\\1e23e133e123e107166923662c6870e3b42abe34a8b05a51d16f8d9781751724\\4_2250.png"
+      ],
+      "timestamp": "2025-06-13T16:13:10.959312"
+    },
+    {
+      "message_id": 11,
+      "role": "user",
+      "content": "",
+      "timestamp": "2025-06-13T16:13:10.959312"
+    },
+    {
+      "message_id": 12,
+      "role": "assistant",
+      "content": "**Focus State:** \n- Quality: [68% match to reference] \n- Trend: [Improving]\n\n**Adjustment:** \n- Steps: [10] (Size: [Convergence])\n\n**Rationale:** The image shows continued improvement, now at 68% match. The trend remains positive, but the rate of improvement is slowing significantly. The adjustment history is: 0 -> 1500 -> 2000 -> 2250 (consistent improvement, decreasing step sizes). We are very close to optimal focus. We will now use a very small step of 10 to achieve convergence and fine-tune the focus.\n\n**Expected:** [5% improvement] - We anticipate a small but noticeable improvement in focus quality with this convergence-sized downward step, bringing the match even closer to the reference image. We are prioritizing precision over large gains at this stage.",
+      "timestamp": "2025-06-13T16:13:10.959312"
+    },
+    {
+      "message_id": 13,
+      "role": "user",
+      "content": [
+        "C:\\Users\\pham0083\\AppData\\Local\\Temp\\gradio\\a76809b8614f5cd1ff1f5072b8fb6bb475e8aacd0ac67e44289921605a5555c8\\5_2260.png"
+      ],
+      "timestamp": "2025-06-13T16:13:10.959312"
+    },
+    {
+      "message_id": 14,
+      "role": "user",
+      "content": "",
+      "timestamp": "2025-06-13T16:13:10.959312"
+    },
+    {
+      "message_id": 15,
+      "role": "assistant",
+      "content": "**Focus State:** \n- Quality: [72% match to reference] \n- Trend: [Improving]\n\n**Adjustment:** \n- Steps: [5] (Size: [Convergence])\n\n**Rationale:** The image shows continued improvement, now at 72% match. The trend remains positive, but the rate of improvement is very slow. The adjustment history is: 0 -> 1500 -> 2000 -> 2250 -> 2260 (consistent improvement, decreasing step sizes). We are very close to optimal focus. We will continue with a very small step of 5 to achieve convergence and fine-tune the focus.\n\n**Expected:** [2% improvement] - We anticipate a small improvement in focus quality with this convergence-sized downward step, bringing the match even closer to the reference image. We are prioritizing precision over large gains at this stage.",
+      "timestamp": "2025-06-13T16:13:10.959312"
+    }
+  ],
+  "microscope_settings": {
+    "z_position_range": "0-4000",
+    "step_minimum": 10,
+    "current_position": 2260
+  }
+}
