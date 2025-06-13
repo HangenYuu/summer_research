@@ -11,4 +11,7 @@
 - MiniCPM4-8B-Q8: It also output gibberish to me.
 - MedGemma-4B-Q8: It output errors to me. There is not even chat history to save.
 - Gemini 2.5 Flash Preview 20/05: It stoppped at 3010. Potential model 🙂.
+
 **Winner**: GPT-4.1 (no surprise)
+
+**Note**: Ollama was run on a 12GB Nvidia GeForce RTX 4070 that came to NTU some months ago. I tried to use the quantized version that fits as much possible in GPU.
