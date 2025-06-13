@@ -1,0 +1,117 @@
+{
+  "session_metadata": {
+    "timestamp": "2025-06-13T14:37:53.816830",
+    "saved_at": "2025-06-13 14:37:53",
+    "total_messages": 15,
+    "reference_image": "C:\\Users\\pham0083\\AppData\\Local\\Temp\\gradio\\1ee8c6302ec9b5950c9414287ea761f1ab92142f8960d9a4005fdd49db368377\\References.png",
+    "final_z_position": 3010,
+    "session_duration": "N/A"
+  },
+  "chat_history": [
+    {
+      "message_id": 1,
+      "role": "user",
+      "content": [
+        "C:\\Users\\pham0083\\AppData\\Local\\Temp\\gradio\\8f0d4eeb3fc13e460257861248c648d492186c9c218c4805d4270f968c1f01bc\\1_0.png"
+      ],
+      "timestamp": "2025-06-13T14:37:53.816830"
+    },
+    {
+      "message_id": 2,
+      "role": "user",
+      "content": "",
+      "timestamp": "2025-06-13T14:37:53.816830"
+    },
+    {
+      "message_id": 3,
+      "role": "assistant",
+      "content": "**Focus State:**\n- Quality: 5% match to reference (severely out of focus)\n- Trend: N/A (Initial measurement)\n**Adjustment:**\n- Steps: 1000 (Size: Coarse)\n**Rationale:** The current image at Z-position 0 is completely blurred, indicating the sample is far from the focal plane. As per the adaptive strategy, an initial coarse search is required. Moving 1000 steps downwards is a large adjustment to quickly approach the general vicinity of the optimal focus.\n**Expected:** Significant improvement in focus quality, revealing some discernible features of the sample.",
+      "timestamp": "2025-06-13T14:37:53.816830"
+    },
+    {
+      "message_id": 4,
+      "role": "user",
+      "content": [
+        "C:\\Users\\pham0083\\AppData\\Local\\Temp\\gradio\\ac2b3ad5b4f38b21d051bdd100cabe1c88a61d25a4635a5c4dfeb66e0f0b9b1e\\2_1000.png"
+      ],
+      "timestamp": "2025-06-13T14:37:53.816830"
+    },
+    {
+      "message_id": 5,
+      "role": "user",
+      "content": "",
+      "timestamp": "2025-06-13T14:37:53.816830"
+    },
+    {
+      "message_id": 6,
+      "role": "assistant",
+      "content": "**Focus State:**\n- Quality: 10% match to reference (still severely out of focus)\n- Trend: Stagnant (no noticeable improvement from previous position)\n**Adjustment:**\n- Steps: 1000 (Size: Coarse)\n**Rationale:** The image at Z-position 1000 is still very blurry and shows no significant improvement compared to Z-position 0. This indicates that the sample is still far from the focal plane. We are still in the initial coarse search phase, and another large step downwards is required to continue exploring the Z-axis range and locate the general vicinity of focus.\n**Expected:** Some discernible",
+      "timestamp": "2025-06-13T14:37:53.816830"
+    },
+    {
+      "message_id": 7,
+      "role": "user",
+      "content": [
+        "C:\\Users\\pham0083\\AppData\\Local\\Temp\\gradio\\61e4fdf27032aab179823f99cd09bbc4b37a52cebf30daf546709e277360c0e9\\3_2000.png"
+      ],
+      "timestamp": "2025-06-13T14:37:53.816830"
+    },
+    {
+      "message_id": 8,
+      "role": "user",
+      "content": "",
+      "timestamp": "2025-06-13T14:37:53.816830"
+    },
+    {
+      "message_id": 9,
+      "role": "assistant",
+      "content": "**Focus State:**\n- Quality: 15% match to reference (still severely out of focus)\n- Trend: Stagnant (no significant improvement from previous positions)\n**Adjustment:**\n- Steps: 1000 (Size: Coarse)\n**Rationale:** The image at Z-position 2000 remains highly blurred, showing no discernible features or improvement compared to the images at Z-positions 0 and 1000. This indicates that the sample is still far from the focal plane. As we are still in the initial coarse search phase and the trend is stagnant, another large downward adjustment is necessary",
+      "timestamp": "2025-06-13T14:37:53.816830"
+    },
+    {
+      "message_id": 10,
+      "role": "user",
+      "content": [
+        "C:\\Users\\pham0083\\AppData\\Local\\Temp\\gradio\\fa68e1c5764e9be86f59bee372b2ec64f409ac819e2e1244ebd60f54c9e13349\\4_3000.png"
+      ],
+      "timestamp": "2025-06-13T14:37:53.816830"
+    },
+    {
+      "message_id": 11,
+      "role": "user",
+      "content": "",
+      "timestamp": "2025-06-13T14:37:53.816830"
+    },
+    {
+      "message_id": 12,
+      "role": "assistant",
+      "content": "**Focus State:**\n- Quality: 95% match to reference (significantly improved, near optimal focus)\n- Trend: Improving (dramatic improvement from previous blurred states)\n**Adjustment:**\n- Steps: 10 (Size: Fine)\n**Rationale:** The image at Z-position 3000 shows a substantial and sudden improvement in focus quality, closely matching the reference image. This indicates that we have successfully located the approximate focal plane during our coarse search. According to the adaptive strategy, when focus",
+      "timestamp": "2025-06-13T14:37:53.816830"
+    },
+    {
+      "message_id": 13,
+      "role": "user",
+      "content": [
+        "C:\\Users\\pham0083\\AppData\\Local\\Temp\\gradio\\34af1344b2b128b7e686520fb234138a49613af89e4b2093ba2f85b63cb6ca1e\\5_3010.png"
+      ],
+      "timestamp": "2025-06-13T14:37:53.816830"
+    },
+    {
+      "message_id": 14,
+      "role": "user",
+      "content": "",
+      "timestamp": "2025-06-13T14:37:53.816830"
+    },
+    {
+      "message_id": 15,
+      "role": "assistant",
+      "content": "**Focus State:**\n- Quality: 100% match to reference (optimal focus achieved)\n- Trend: Converged (optimal focus reached)\n**Adjustment:**\n- Steps: 0 (Size: N/A)\n**Rationale:** The current image at Z-position 3010 is virtually identical to the reference image, exhibiting clear and sharp details. This indicates that optimal focus has been successfully achieved. No further adjustments are necessary as the system has converged to the ideal focal plane.\n**Expected:** Optimal focus maintained.",
+      "timestamp": "2025-06-13T14:37:53.816830"
+    }
+  ],
+  "microscope_settings": {
+    "z_position_range": "0-4000",
+    "step_minimum": 10,
+    "current_position": 3010
+  }
+}

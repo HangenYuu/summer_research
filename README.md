@@ -9,3 +9,4 @@
 - SmolVLM2-2.2B-16F: It output gibberish to me.
 - MiniCPM4-8B-Q8: It also output gibberish to me.
 - MedGemma-4B-Q8: It output errors to me. There is not even chat history to save.
+- Gemini 2.5 Flash Preview 20/05: It stoppped at 3010. Potential model 🙂.
