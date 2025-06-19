@@ -1,3 +1,4 @@
+# %%
 import os
 import cv2
 
@@ -35,6 +36,7 @@ controller = StepperMotorController("COM3")
 controller.connect()
 
 
+# %%
 ## Message State
 class State(TypedDict):
     # Messages have the type "list". The `add_messages` function
@@ -46,6 +48,7 @@ class State(TypedDict):
     sender: str
 
 
+# %%
 @tool
 def Change_Position(steps: int) -> None:
     if steps < 0:
@@ -54,7 +57,7 @@ def Change_Position(steps: int) -> None:
 
 
 @tool
-def Capture_Image(camera_index: int = 0, save_path: Optional[str] = None) -> dict:
+def Capture_Image(camera_index: int = 0, save_path: str | None = None) -> dict:
     """
     Capture an image from the USB microscope (webcam).
 
@@ -73,8 +76,8 @@ def Capture_Image(camera_index: int = 0, save_path: Optional[str] = None) -> dic
             return {"status": "error", "message": "Could not open camera"}
 
         # Set camera properties for better quality
-        cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
-        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
+        cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+        cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
         cap.set(cv2.CAP_PROP_AUTOFOCUS, 0)  # Disable autofocus for manual control
 
         # Capture frame
@@ -105,4 +108,5 @@ def Capture_Image(camera_index: int = 0, save_path: Optional[str] = None) -> dic
         return {"status": "error", "message": f"Capture failed: {str(e)}"}
 
 
+# %%
 graph_builder = StateGraph(State)
